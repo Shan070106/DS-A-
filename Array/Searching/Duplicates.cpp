@@ -1,7 +1,6 @@
 // Question:
 
-/* Given an array of n numbers, give an algorithm for checking whether there are any 
-duplicate elements in the array or not */
+/* Given an array of n numbers, give an algorithm for checking whether there are any duplicate elements in the array or not */
 
 #include<iostream>
 #include<algorithm>
