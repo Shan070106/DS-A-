@@ -1,19 +1,21 @@
 class Solution {
-    int lps(string& str,int s, int e, vector<vector<int>>& dp){
-        if(s==e) return 1;
-        if(s>e) return 0;
-
-        if(dp[s][e] != -1) return dp[s][e];
-        
-        if(str[s] == str[e])
-            return dp[s][e] = 2 + lps(str,s+1,e-1,dp);
-        return dp[s][e] = max(lps(str,s+1,e,dp), lps(str,s,e-1,dp));
-    }
-
 public:
     int minInsertions(string s) {
         int n = s.size();
-        vector<vector<int>> dp(n+1,vector<int>(1+n,-1));
-        return n - lps(s,0,n-1,dp);
+        vector<vector<int>> dp(n+1,vector<int>(1+n,0));
+        for(int i=0;i<n;i++)
+            dp[i][i] = 1;
+        
+        for(int l=2;l<=n;l++){
+            for(int i=0;i+l-1<n;i++){
+                int j = i+l-1;
+                if(s[i] == s[j])
+                    dp[i][j] = 2 + dp[i+1][j-1];
+                else
+                    dp[i][j] = max(dp[i+1][j] , dp[i][j-1]);
+            }
+        }
+
+        return n-dp[0][n-1];
     }
 };
