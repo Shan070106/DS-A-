@@ -109,6 +109,22 @@ vec<lli> factors(lli n){
     return res;
 }
 
+template<typename T> T mex(const vec<T>& arr) {
+    size_t n = arr.size();
+    vec<bool> present(n + 1, false);
+    
+    for (T num : arr) {
+        if (num >= 0 && num <= n) {
+            present[num] = true;
+        }
+    }
+    
+    rep(i,0,n){
+        if (!present[i]) return i;
+    }
+    return n + 1;
+}
+
 // ---------- Main Function ----------
 int main() {
     fastio;
