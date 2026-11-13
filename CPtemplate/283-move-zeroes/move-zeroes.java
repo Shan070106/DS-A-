@@ -9,7 +9,7 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             if(nums[i] != 0){
                 swap(nums,i,z);
-                System.out.println(i+" "+z);
+                // System.out.println(i+" "+z);
                 z++;
             }
         }
